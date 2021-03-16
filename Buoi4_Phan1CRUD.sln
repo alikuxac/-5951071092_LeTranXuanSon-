@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buoi4_Phan1CRUD", "Buoi4_Phan1CRUD\Buoi4_Phan1CRUD.csproj", "{84F93743-6C1B-44E4-893E-D1A70EED4BAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84F93743-6C1B-44E4-893E-D1A70EED4BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F93743-6C1B-44E4-893E-D1A70EED4BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F93743-6C1B-44E4-893E-D1A70EED4BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F93743-6C1B-44E4-893E-D1A70EED4BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0ACD1B53-D0EF-4EC5-9716-6E2B4A3F00C0}
+	EndGlobalSection
+EndGlobal
