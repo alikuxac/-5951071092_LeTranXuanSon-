@@ -39,7 +39,7 @@ namespace Buoi4_Phan2WinForm
         }
         private bool IsValidData()
         {
-            if(txtHoSV.Text == String.Empty || txtTenSV.Text == String.Empty || string.IsNullOrEmpty(txtSDT.Text) || string.IsNullOrEmpty(txtSBD.Text))
+            if(txtHoSV.Text == String.Empty || txtTenSV.Text == String.Empty || txtDiaChi.Text == String.Empty || string.IsNullOrEmpty(txtSDT.Text) || string.IsNullOrEmpty(txtSBD.Text))
             {
                 MessageBox.Show("Có chỗ chưa nhập dữ liệu!!!", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
