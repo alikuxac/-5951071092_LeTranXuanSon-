@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>5951071092_LeTranXuanSon</title>
+        <style>
+            #map {
+            height: 100%;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        </style>
+        <script>
+            function initMap() {
+
+                const myHouselocation = { lat:10.8637192, lng: 106.7499161};
+                const UTC2location = { lat: 10.8458086, lng: 106.7945445};
+
+                const myAvatar = 'https://cdn.discordapp.com/attachments/685082279873085462/823170607231139870/cek.png';
+                const UTC2icon = 'https://cdn.discordapp.com/attachments/685082279873085462/823170105617285140/iconutc2.png'
+                
+                const directionsService = new google.maps.DirectionsService();
+                const directionsRenderer = new google.maps.DirectionsRenderer();
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: {lat: 10.8514746,lng: 106.766426},
+                });
+
+                const myInfo = '<b>Họ tên</b>: Lê Trần Xuân Sơn<br>' 
+                    + '<b>MSSV</b>: 5951071092<br>' 
+                    + '<b>Lớp</b>: CQ.K59 CNTT<br>' 
+                    + '<b>Ngày sinh</b>: 27/04/2000<br>' 
+                    + '<b>Quê quán</b>: Cần thơ<br>' 
+                    + '<b>Email</b>: lexson270400@gmail.com<br>';
+
+                
+
+                const myHouseMarker = new google.maps.Marker({
+                    position: myHouselocation,
+                    map,
+                    title: 'My House',
+                    icon: myAvatar
+                });
+
+                const myInfoWindow = new google.maps.InfoWindow({
+                    content: myInfo,
+                    position: myHouseMarker.getPosition()
+                });
+
+                myHouseMarker.addListener('click', () => {
+                    myInfoWindow.open(map, myHouseMarker);
+                });
+                
+                const UTC2info = '<b>Tên</b>: Trường Đại học Giao Thông Vận Tải Phân hiệu tại Thành Phố Hồ Chí Minh<br>' 
+                    + '<b>Địa chỉ</b>: 451 Lê Văn Việt, Tăng Nhơn Phú A, Quận 9, Thành Phố Hồ Chí Mình';
+
+                const UTC2Marker = new google.maps.Marker({
+                    position: UTC2location,
+                    map,
+                    title: 'UTC2',
+                    icon: UTC2icon
+                })
+                
+                const UTC2infoWndow = new google.maps.InfoWindow({
+                    content: UTC2info,
+                    position: UTC2Marker.getPosition()
+                });
+
+                UTC2Marker.addListener('click', () => {
+                    UTC2infoWndow.open(map, UTC2Marker);
+                });
+
+                directionsRenderer.setMap(map);
+                directionsService.route(
+                {
+                    origin: myHouseMarker.getPosition() , 
+                    destination:  UTC2Marker.getPosition(),
+                    travelMode: google.maps.TravelMode.DRIVING
+                },
+                (response, status)=>{
+                if (status === "OK") {
+                    directionsRenderer.setDirections(response);
+                } else {
+                    window.alert("Direction request failed due to " + status);
+                }
+                }
+            );
+            }
+            
+            
+        </script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <!-- jsFiddle will insert css and js -->
+    </head>
+    <body>
+        <div id="map"></div>
+        <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"
+        async></script>
+    </body>
+</html>
