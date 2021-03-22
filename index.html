@@ -44,7 +44,10 @@
                     position: myHouselocation,
                     map,
                     title: 'My House',
-                    icon: myAvatar
+                    icon: {
+                        url: myAvatar,
+                        scaledSize: new google.maps.Size(50, 50)
+                    }
                 });
 
                 const myInfoWindow = new google.maps.InfoWindow({
@@ -63,7 +66,10 @@
                     position: UTC2location,
                     map,
                     title: 'UTC2',
-                    icon: UTC2icon
+                    icon: {
+                        url: UTC2icon,
+                        scaledSize: new google.maps.Size(50, 50),
+                    }
                 })
                 
                 const UTC2infoWndow = new google.maps.InfoWindow({
