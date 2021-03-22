@@ -1,0 +1,1 @@
+Em sử dụng nodejs vì token để public rất nguy hiểm
