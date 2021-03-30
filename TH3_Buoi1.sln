@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TH3_Buoi1", "TH3_Buoi1\", "{73AEAEED-3E59-402B-8A7D-BF695BC5B2ED}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52150"
+		Debug.AspNetCompiler.PhysicalPath = "TH3_Buoi1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52150\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52150"
+		Release.AspNetCompiler.PhysicalPath = "TH3_Buoi1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52150\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52150"
+		SlnRelativePath = "TH3_Buoi1\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73AEAEED-3E59-402B-8A7D-BF695BC5B2ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73AEAEED-3E59-402B-8A7D-BF695BC5B2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {091FDF54-94A2-4C47-A202-F470CFD533B6}
+	EndGlobalSection
+EndGlobal
