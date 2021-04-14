@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>5951071092_LeTranXuanSon</title>
+        <style>
+            #map {
+            height: 100%;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        </style>
+        <script>
+            function initMap() {
+
+                const radius = 13;
+                let OutTriangleEdge = radius * 2;
+
+                const BuuDien = { lat: 10.7798579, lng: 106.6999075};
+                const VanMieu = { lat: 21.0274173, lng: 105.8354395};
+
+                const BuuDienPoint =  new google.maps.LatLng(BuuDien.lat, BuuDien.lng);
+                const VanMieuPoint =  new google.maps.LatLng(VanMieu.lat, VanMieu.lng);
+
+                const BuuDienIcon = 'https://cdn.discordapp.com/emojis/733700939394842754.png?v=1'; // Em lười nên lấy link ảnh làm icon cho marker :D
+                const VanMieuIcon = 'https://cdn.discordapp.com/emojis/770470973010477097.png?v=1';
+                
+                const directionsService = new google.maps.DirectionsService();
+                const directionsRenderer = new google.maps.DirectionsRenderer();
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 5,
+                    center: {lat: 15.8514043,lng: 102.6081569},
+                });
+
+                const BuuDienInfo = 'Bưu điện TP. Hồ Chí Minh (HCMC Post) trực thuộc Tổng Công ty Bưu chính Việt Nam (VNPost), thành viên của Tập đoàn Bưu chính Viễn thông Việt Nam (VNPT). Tự hào với hơn 35 năm kinh nghiệm và là doanh nghiệp chủ lực trong việc cung cấp các dịch vụ Bưu chính – chuyển phát trên địa bàn Thành phố, Bưu điện TP.HCM cam kết luôn mang đến khách hàng những dịch vụ với chất lượng tốt nhất. ';
+
+                const BuuDienMarker = new google.maps.Marker({
+                    position: BuuDien,
+                    map,
+                    title: 'Bưu điện',
+                    icon: {
+                        url: BuuDienIcon,
+                        scaledSize: new google.maps.Size(50, 50)
+                    }
+                });
+
+                const BuuDienWindow = new google.maps.InfoWindow({
+                    content: BuuDienInfo,
+                    position: BuuDienMarker.getPosition()
+                });
+
+                const BuuDienCircle = new google.maps.Circle({
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#FF0000",
+                    fillOpacity: 0.35,
+                    map,
+                    center: BuuDien,
+                    radius: radius
+                });
+
+                BuuDienMarker.addListener('click', () => {
+                    myInfoWindow.open(map, BuuDienMarker);
+                });
+
+                // Bưu điện - hình tam giác đều nội tiếp đường tròn này
+                var BDNnT1 = google.maps.geometry.spherical.computeOffset(BuuDienPoint, OutTriangleEdge, 0);
+                var BDNnT2 = google.maps.geometry.spherical.computeOffset(BuuDienPoint, OutTriangleEdge, 120);
+                var BDNnT3 = google.maps.geometry.spherical.computeOffset(BuuDienPoint, OutTriangleEdge, -120);
+                var BDNnT = [BDNnT1, BDNnT2, BDNnT3];
+                const TGBDNnT = new google.maps.Polygon({
+                    path: BDNnT,
+                    strokeColor: '#FFFF00',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FFFF00',
+                    fillOpacity: 0.35
+                });
+                TGBDNnT.setMap(map);
+
+                // Bưu điện - hình tam giác ngoại tiếp đường tròn trên
+                var BDNT1 = google.maps.geometry.spherical.computeOffset(BuuDienPoint, radius, 0);
+                var BDNT2 = google.maps.geometry.spherical.computeOffset(BuuDienPoint, radius, 120);
+                var BDNT3 = google.maps.geometry.spherical.computeOffset(BuuDienPoint, radius, -120);
+                var BDNT = [BDNT1, BDNT2, BDNT3];
+                const TGBDNT = new google.maps.Polygon({
+                    path: BDNT,
+                    strokeColor: '#F168Fa',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#F168Fa',
+                    fillOpacity: 0.35
+                });
+                TGBDNT.setMap(map);
+
+                //Văn Miếu
+                const VanMieuinfo = 'Văn Miếu được xây dựng năm 1070 dưới thời vua Lý Thánh Tông, là nơi thờ Khổng Tử, Chu Công và Tứ phối. Đến năm 1076, vua Lý Nhân Tông cho lập thêm Quốc Tử Giám bên cạnh là trường đại học dành riêng cho con vua và các gia đình quý tộc. Đến thời vua Trần Thái Tông, Quốc Tử Giám được đổi tên thành Quốc học viện và thu nhận cả con cái nhà thường dân có sức học xuất sắc.';
+
+                const VanMieuMaker = new google.maps.Marker({
+                    position: VanMieu,
+                    map,
+                    title: 'Văn Miếu',
+                    icon: {
+                        url: VanMieuIcon,
+                        scaledSize: new google.maps.Size(50, 50)
+                    }
+                })
+                
+                const VanMieuinfoWindow = new google.maps.InfoWindow({
+                    content: VanMieuinfo,
+                    position: VanMieuMaker.getPosition()
+                });
+
+                VanMieuinfoWindow.addListener('click', () => {
+                    VanMieuinfoWindow.open(map, VanMieuMaker);
+                });
+
+                const VanMieuCircle = new google.maps.Circle({
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#FF0000",
+                    fillOpacity: 0.35,
+                    map,
+                    center: VanMieu,
+                    radius: radius
+                });
+
+                // Văn Miếu - hình tam giác đều nội tiếp đường tròn này
+                var VMNnT1 = google.maps.geometry.spherical.computeOffset(VanMieuPoint, OutTriangleEdge, 0);
+                var VMNnT2 = google.maps.geometry.spherical.computeOffset(VanMieuPoint, OutTriangleEdge, 120);
+                var VMNnT3 = google.maps.geometry.spherical.computeOffset(VanMieuPoint, OutTriangleEdge, -120);
+                var VMNnT = [VMNnT1, VMNnT2, VMNnT3];
+                const TGVMNnT = new google.maps.Polygon({
+                    path: VMNnT,
+                    strokeColor: '#FFFF00',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FFFF00',
+                    fillOpacity: 0.35
+                });
+                TGVMNnT.setMap(map);
+
+                // Văn Miếu - hình tam giác ngoại tiếp đường tròn trên
+                var VMNT1 = google.maps.geometry.spherical.computeOffset(VanMieuPoint, radius, 0);
+                var VMNT2 = google.maps.geometry.spherical.computeOffset(VanMieuPoint, radius, 120);
+                var VMNT3 = google.maps.geometry.spherical.computeOffset(VanMieuPoint, radius, -120);
+                var VMNT = [VMNT1, VMNT2, VMNT3];
+                const TGVMNT = new google.maps.Polygon({
+                    path: VMNT,
+                    strokeColor: '#F168Fa',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#F168Fa',
+                    fillOpacity: 0.35
+                });
+                TGVMNT.setMap(map);
+
+                directionsRenderer.setMap(map);
+                directionsService.route(
+                {
+                    origin: BuuDienMarker.getPosition() , 
+                    destination:  VanMieuMaker.getPosition(),
+                    travelMode: google.maps.TravelMode.DRIVING
+                },
+                (response, status)=>{
+                if (status === "OK") {
+                    directionsRenderer.setDirections(response);
+                } else {
+                    window.alert("Direction request failed due to " + status);
+                }
+                }
+            );
+            }
+            
+        </script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <!-- jsFiddle will insert css and js -->
+    </head>
+    <body>
+        <div id="map"></div>
+        <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=geometry&v=weekly"
+        async></script>
+        <!-- Key private nên tự tạo hoặc lụm đâu đó để test nha  -->
+</html>
